@@ -1,7 +1,7 @@
-function cards () {
+function cards() {
 
     class MenuCard {
-        constructor (src, alt, subtitle, descr, price) {
+        constructor(src, alt, subtitle, descr, price) {
             this.src = src;
             this.alt = alt;
             this.title = subtitle;
@@ -10,9 +10,9 @@ function cards () {
             this.render();
         }
 
-        render () {
+        render() {
             let parent = document.querySelector('.menu__field .container');
-            
+
             let newCard = document.createElement('div');
             newCard.classList.add('menu__item');
 
@@ -37,19 +37,19 @@ function cards () {
 
             let newPrice = document.createElement('div');
             newPrice.classList.add('menu__item-price');
-                let cost = document.createElement('div');
-                cost.classList.add('menu__item-cost');
-                cost.textContent = 'Цена:';
-                newPrice.append(cost);
+            let cost = document.createElement('div');
+            cost.classList.add('menu__item-cost');
+            cost.textContent = 'Цена:';
+            newPrice.append(cost);
 
-                let newPriceTotal = document.createElement('div');
-                newPriceTotal.classList.add('menu__item-total');
-                newPriceTotal.textContent = ' грн/день';
-                    let priceText = document.createElement('span');
-                    priceText.textContent = this.price;
-                    newPriceTotal.append(priceText);
-                
-                newPrice.append(newPriceTotal);
+            let newPriceTotal = document.createElement('div');
+            newPriceTotal.classList.add('menu__item-total');
+            newPriceTotal.textContent = ' грн/день';
+            let priceText = document.createElement('span');
+            priceText.textContent = this.price;
+            newPriceTotal.append(priceText);
+
+            newPrice.append(newPriceTotal);
 
             newCard.append(newPrice);
 
@@ -57,28 +57,15 @@ function cards () {
         }
     }
 
-    /* let getDataCard = async (url) => {
-    let result = await fetch(url);
-
-    if(!result.ok) {
-        throw new Error(`Error. Status: ${result.status}`);
-    }
-
-    return await result.json();
-    }; */
-
-    /* getDataCard('http://localhost:3000/menu')
+    axios.get('http://localhost:3000/menu')
         .then(data => {
-            data.forEach(({img, altimg, title, descr, price}) => {
+            data.data.forEach(({ img, altimg, title, descr, price }) => {
                 new MenuCard(img, altimg, title, descr, price);
             });
-        }); */
-
-    axios.get('http://localhost:3000/menu').then(data => {
-        data.data.forEach(({img, altimg, title, descr, price}) => {
-            new MenuCard(img, altimg, title, descr, price);
+        })
+        .catch(error => {
+            throw new Error(error);
         });
-    });
 }
 
 export default cards;
