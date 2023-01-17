@@ -1,13 +1,13 @@
 'use strict';
 
 function closeModal(selectorModal) {
-    modalWindow = document.querySelector(selectorModal);
+    let modalWindow = document.querySelector(selectorModal);
     modalWindow.classList.remove('tabBlock');
     document.body.style.overflow = '';
 }
 
 function openModal(selectorModal, modalTimerId) {
-    modalWindow = document.querySelector(selectorModal);
+    let modalWindow = document.querySelector(selectorModal);
     modalWindow.classList.add('tabBlock');
     document.body.style.overflow = 'hidden';
 
