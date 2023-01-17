@@ -43,9 +43,7 @@ function timer(dedlain) {
             minutes.textContent = addZero(newTime.minutes);
             seconds.textContent = addZero(newTime.seconds);
 
-            if (newTime <= 0) {
-                clearInterval(timerId);
-            }
+            if (newTime <= 0) clearInterval(timerId);
         }
     }
     setClock('.timer', dedlain);
