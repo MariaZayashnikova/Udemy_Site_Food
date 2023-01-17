@@ -7,9 +7,9 @@ import modal from './modules/modal';
 import slider from './modules/slider';
 import tabs from './modules/tabs';
 import timer from './modules/timer';
-import {openModal} from './modules/modal';
+import { openModal } from './modules/modal';
 
-const modalTimerId = setTimeout(() => openModal('.modal', modalTimerId), 50000);
+const modalTimerId = setTimeout(() => openModal('.modal', modalTimerId), 20000);
 
 calc();
 cards();
@@ -19,7 +19,7 @@ slider({
     sliderPrev: '.offer__slider-prev',
     sliderNext: '.offer__slider-next',
     currNumSlider: '#current',
-    total: '#total', 
+    total: '#total',
     offerSlide: '.offer__slide',
     slideInner: '.offer_slider-inner',
     slideWrapper: '.offer__slider-wrapper',
