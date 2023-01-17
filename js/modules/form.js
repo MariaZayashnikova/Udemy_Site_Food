@@ -1,7 +1,7 @@
-import {closeModal, openModal} from './modal';
-import {postData} from '../services/services';
+import { closeModal, openModal } from './modal';
+import { postData } from '../services/services';
 
-function form (selectorForms, modalTimerId) {
+function form(selectorForms, modalTimerId) {
     let forms = document.querySelectorAll(selectorForms);
     let messages = {
         loading: 'img/modal/original.svg',
@@ -9,11 +9,9 @@ function form (selectorForms, modalTimerId) {
         failure: 'Что-то пошло не так...'
     };
 
-    forms.forEach(item => {
-        binPostData(item);
-    });
+    forms.forEach(item => binPostData(item));
 
-    function binPostData (form) {
+    function binPostData(form) {
         form.addEventListener('submit', (event) => {
             event.preventDefault();
 
@@ -22,33 +20,24 @@ function form (selectorForms, modalTimerId) {
             messageStatus.classList.add('image-loading');
             form.insertAdjacentElement('afterend', messageStatus);
 
-    /*      let request = new XMLHttpRequest();
-            request.open('POST', 'server.php');
-            request.setRequestHeader('Content-type', 'application/json; charset=utf-8'); */
-            let formData  = new FormData(form);
-        
+            let formData = new FormData(form);
             let json = JSON.stringify(Object.fromEntries(formData.entries()));
-        
+
             postData('http://localhost:3000/requests', json)
-            .then((data) => {
-                console.log(data);
-                messageStatus.remove();
-                showMessage(messages.success);
-            })
-            .catch(() => {
-                showMessage(messages.failure);
-            })
-            .finally(() => form.reset());
-            // request.send(json);
+                .then((data) => showMessage(messages.success))
+                .catch(() => showMessage(messages.failure))
+                .finally(() => {
+                    form.reset();
+                    messageStatus.remove();
+                });
         });
     }
 
-    function showMessage (message) {
-        let modalWindow = document.querySelector('.modal');
+    function showMessage(message) {
         let prevModal = document.querySelector('.modal__content');
-        
+
         prevModal.classList.add('tabDisabled');
-        openModal(modalWindow, modalTimerId);
+        openModal('.modal', modalTimerId);
 
         let messageText = document.createElement('div');
         messageText.classList.add('modal__content');
@@ -62,7 +51,7 @@ function form (selectorForms, modalTimerId) {
         setTimeout(() => {
             messageText.remove();
             prevModal.classList.remove('tabDisabled');
-            closeModal(modalWindow);
+            closeModal('.modal');
         }, 4000);
     }
 }
