@@ -26,4 +26,4 @@ slider({
     containerSlide: '.offer__slider'
 });
 tabs('.tabheader__item', '.tabcontent', 'tabheader__item_active');
-timer('2020-12-31');
+timer('2023-12-31');
