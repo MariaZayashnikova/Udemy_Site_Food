@@ -16,7 +16,7 @@
 6. Реализация таймера отсчёта дней до нового года.<br>
 
 <h2>Посмотреть проект можно тут</h2>:
-[site_Food.webm](https://user-images.githubusercontent.com/65776059/213217753-69ff009e-904f-4992-8541-b4350dd55b24.webm)
+https://user-images.githubusercontent.com/65776059/213217753-69ff009e-904f-4992-8541-b4350dd55b24.webm
 <br>
 
 Проект выполнен на vanilla js, для сборки используется webpack.<br>
